@@ -1,0 +1,11 @@
+name = "una1_formal"
+version = "0.1.0"
+defaultTargets = ["Una1Formal", "una1_comparator_audit"]
+
+[[lean_lib]]
+name = "Una1Formal"
+
+[[lean_exe]]
+name = "una1_comparator_audit"
+root = "Una1Formal.ComparatorAudit"
+supportInterpreter = true

@@ -1,0 +1,28 @@
+name: Lean 4 & External 3-Engine Verification CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  lean4-and-external-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Official Lean 4 Action (lake build & ComparatorAudit)
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: true
+
+      - name: Set up Python 3.12 for SymPy + mpmath Cross-Check
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install SymPy and mpmath
+        run: pip install sympy mpmath pytest
