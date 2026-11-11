@@ -26,3 +26,8 @@ jobs:
 
       - name: Install SymPy and mpmath
         run: pip install sympy mpmath pytest
+
+      - name: Run Zero-UNA-Dependency External Third-Party Auditor
+        run: |
+          export PATH="$HOME/.elan/bin:$PATH"
+          python external_third_party_auditor_v0_1.py
