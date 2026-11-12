@@ -1,3 +1,4 @@
+From: Tom Budd <tom@resoverse.io> (via tom@tombudd.com)
 To: info@renphil.org
 Subject: AI for Math Fund Concept Note — Weight-Independent Conjecture-Generator & 4-Engine Formal Verification Pipeline (Lean 4) for Existence (∃) Counterexample Discovery and Fail-Closed Verification
 
@@ -35,5 +36,5 @@ I would welcome the opportunity to submit a full proposal and demonstrate the li
 Respectfully,
 Tom Budd
 Founder, ResoVerse
-Email: tom@tombudd.com
+Email: tom@resoverse.io | tom@tombudd.com
 Repository: https://github.com/ResoVerse-io/una-lean4-formal-verification

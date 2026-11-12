@@ -1,6 +1,9 @@
+From: Tom Budd <tom@resoverse.io> (via tom@tombudd.com)
 To: expMath@darpa.mil
 Subject: DARPA expMath Executive Abstract — Weight-Independent Conjecture-Generator & 4-Engine Formal Verification Pipeline (PASS_ALL_26_THEOREMS_TYPE_MATCHED_AND_ZERO_AXIOM_VERIFIED)
-Attachment: /Users/tomstudio/UNA/state/audits/ultracode_preflight_candidates/alien_yang_mills_constructive_20261110/una1_lean4_community_package/DARPA_EXPMATH_AND_AI_FOR_MATH_GRANT_PROPOSAL_V0_1.md
+Attachments:
+  1. /Users/tomstudio/UNA/state/audits/ultracode_preflight_candidates/alien_yang_mills_constructive_20261110/una1_lean4_community_package/DARPA_EXPMATH_AND_AI_FOR_MATH_GRANT_PROPOSAL_V0_1.md
+  2. /Users/tomstudio/UNA/state/audits/ultracode_preflight_candidates/alien_yang_mills_constructive_20261110/una1_lean4_community_package/una1_formal_verification_preprint.pdf
 
 Dear Dr. Shafto and the DARPA I2O expMath Team,
 
@@ -23,5 +26,5 @@ I would welcome a brief technical briefing with the expMath team at your conveni
 Respectfully,
 Tom Budd
 Principal Investigator / Founder, ResoVerse
-Email: tom@tombudd.com
+Email: tom@resoverse.io | tom@tombudd.com
 GitHub: https://github.com/ResoVerse-io/una-lean4-formal-verification
