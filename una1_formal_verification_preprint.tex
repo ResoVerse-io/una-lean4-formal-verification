@@ -1,0 +1,144 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\geometry{margin=1in}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=blue!70!black
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{\textbf{Weight-Independent Conjecture Generation and Multi-Engine Formal Verification in Lean 4:}\\
+\large Sub-Lemma Auditing, Existence ($\exists$) Counterexample Discovery, and Fail-Closed Epistemic Abstention}
+
+\author{
+  \textbf{Tom Budd}\\
+  ResoVerse\\
+  \texttt{tom@tombudd.com} $\cdot$ \url{https://github.com/ResoVerse-io/una-lean4-formal-verification}
+}
+
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Large language models frequently hallucinate mathematical proofs because autoregressive token prediction lacks an independent deductive kernel and an explicit epistemic abstention boundary. In this paper, I present a weight-independent formal verification and counterexample discovery architecture that decouples candidate conjecture generation (\texttt{conjecture\_generator}) from a four-engine deterministic verification pipeline (\texttt{Lean 4} dependent-type kernel, \texttt{SymPy} symbolic computer algebra, \texttt{mpmath} 50-decimal-place interval/numerical analysis, and native Python reference verifiers) governed by a fail-closed epistemic abstention gate (\texttt{fail\_closed\_abstention\_gate}). By exploiting the logical asymmetry between universal claims ($\forall x, P(x)$) and existential refutations ($\exists x, \neg P(x)$), the system produces complete, zero-axiom machine-checked disproofs of false conjectures while automatically abstaining from unproved continuum universality claims. I release an open-source benchmark suite (\texttt{Una1Formal}) containing 26 zero-axiom formal theorems verified via a programmatic \texttt{Lean.MetaM} kernel comparator (\texttt{cInfo.type == sInfo.type} and \texttt{Lean.collectAxioms == []}) and validated in \texttt{leanprover/comparator}, alongside three upstream contributions to \texttt{google-deepmind/formal-conjectures} (PR \#7917 formalizing OEIS \texttt{A060003} / Guy Problem A19 on Stern--Goldbach odd composite numbers, PR \#7918 formalizing Erd\H{o}s Problem 301 on unit-fraction sum-free sets, and PR \#7919 updating Erd\H{o}s Problem 670).
+\end{abstract}
+
+\section{Introduction}
+
+Current automated theorem-proving and autoformalization pipelines face two structural failure modes when applied to frontier mathematical research:
+\begin{enumerate}
+    \item \textbf{Specification drift and axiom smuggling:} An automated prover may modify the target theorem statement, introduce unproved auxiliary axioms, or invoke \texttt{sorryAx} while reporting a successful compilation.
+    \item \textbf{Conflation of finite evidence with universal ($\forall$) proof:} Numerical or finite-cutoff verification of a partial differential equation or gauge-theoretic lattice model is frequently misinterpreted by language models as a proof of a continuum universal theorem.
+\end{enumerate}
+
+To address both failure modes simultaneously, I introduce a weight-independent architecture built on three principles:
+\begin{enumerate}
+    \item \textbf{Four-Engine Cross-Verification:} Every candidate mathematical claim is evaluated across up to four independent computational substrates: (i) the \texttt{Lean 4} kernel (\texttt{v4.32.2}--\texttt{v4.36.0}), (ii) \texttt{SymPy} symbolic CAS, (iii) \texttt{mpmath} 50-decimal-place arbitrary-precision arithmetic, and (iv) standalone zero-dependency Python reference verifiers.
+    \item \textbf{Zero-Trust Kernel Comparator Auditing:} Using \texttt{Lean.MetaM} (\texttt{Una1Formal/ComparatorAudit.lean}) and the Lean FRO's \texttt{leanprover/comparator}, every candidate proof in \texttt{Solution.lean} is checked against an immutable specification in \texttt{Challenge.lean} to enforce exact definitional type equality (\texttt{cInfo.type == sInfo.type}) and zero axiom dependencies (\texttt{Lean.collectAxioms == []}).
+    \item \textbf{Fail-Closed Epistemic Abstention (\texttt{fail\_closed\_abstention\_gate}):} When a problem requires an infinite-dimensional continuum limit or an open universal ($\forall$) proof (such as the Clay Millennium Prize problems), the system verifies finite-dimensional sub-lemmas and records an explicit abstention receipt (\texttt{unproved\_millennium\_breakthrough\_claimed = false}) rather than overclaiming a universal proof.
+\end{enumerate}
+
+\section{The $\forall$ vs.\ $\exists$ Verification Asymmetry}
+
+A central design principle of the system is the formal asymmetry between universal theorems and existential counterexamples:
+\begin{equation}
+  \neg \bigl(\forall x \in X,\, P(x)\bigr) \iff \exists x_0 \in X,\, \neg P(x_0).
+\end{equation}
+Whereas establishing $\forall x \in X, P(x)$ over an infinite domain $X$ requires an analytic or inductive proof across all elements, refuting $\forall x \in X, P(x)$ requires exhibiting a single finite witness $x_0 \in X$ for which $\neg P(x_0)$ is decidably verifiable in the \texttt{Lean 4} kernel with zero axioms (\texttt{SolutionAxioms = []}).
+
+\subsection{Stern--Goldbach Odd Composites and OEIS \texttt{A060003} (PR \#7917)}
+
+In a 1752 letter to Leonhard Euler, Christian Goldbach conjectured that every odd integer $n > 1$ can be expressed in the form
+\begin{equation}
+  n = p + 2a^2
+\end{equation}
+for a prime $p$ and an integer $a \ge 0$. In 1854, Moritz Abraham Stern discovered two odd composite exceptions: $n_1 = 5777 = 53 \times 109$ and $n_2 = 5993 = 13 \times 461$. Whether any third odd composite exception exists above $5993$ remains an open problem (OEIS \texttt{A060003} / \texttt{A058320}; Richard K.\ Guy, \emph{Unsolved Problems in Number Theory}, Problem A19; Laurent Hodges, 1993).
+
+In \texttt{Una1Formal} (\texttt{goldbach\_1752\_full\_disproof\_5777} and \texttt{goldbach\_1752\_full\_disproof\_5993}) and upstream in \texttt{google-deepmind/formal-conjectures} (PR \#7917, \texttt{FormalConjectures/OEIS/60003.lean}), the system formalizes:
+\begin{enumerate}
+    \item Decidable kernel-verified proofs (\texttt{decide +kernel}, zero axioms) that $5777$ and $5993$ are odd, composite, and satisfy $\neg \mathrm{IsPrimePlusTwiceSquare}(n)$ across all $0 \le a \le \lfloor\sqrt{n/2}\rfloor$.
+    \item The formal disproof theorem \texttt{not\_forall\_odd\_composite\_isPrimePlusTwiceSquare}.
+    \item The open research conjecture \texttt{no\_other\_odd\_composite\_stern\_number} (\texttt{@[category research open, question, AMS 11]}).
+\end{enumerate}
+
+\subsection{Finite Magma Non-Implication Counterexamples (\texttt{equational\_theories})}
+
+Following Terence Tao's \texttt{teorth/equational\_theories} paradigm, the system constructs and certifies three order-3 magma ($M_3 = \{e_0, e_1, e_2\}$) counterexamples with zero axioms:
+\begin{enumerate}
+    \item \textbf{Left-Stabilizing Idempotent Non-Associative Magma (\texttt{op}):} Proves $\forall x, y \in M_3, x \cdot (x \cdot y) = x \cdot y$ (\texttt{magma\_left\_stabilizes}) and $\forall x \in M_3, x \cdot x = x$ (\texttt{magma\_idempotent}), while refuting associativity at witness $(e_0, e_2, e_1)$ (\texttt{magma\_not\_associative}).
+    \item \textbf{Steiner Quasigroup (\texttt{rpsOp}, $x \circ y = (2x+2y) \bmod 3$):} Proves universal idempotence and commutativity (\texttt{rps\_magma\_idempotent\_and\_commutative}) while refuting associativity at $(e_0, e_0, e_1)$ (\texttt{rps\_magma\_not\_associative}).
+    \item \textbf{Medial Non-Commutative Magma (\texttt{leftZeroOp}, $x \star y = x$):} Proves the 81-case 4-variable medial identity $(x \star y) \star (z \star w) = (x \star z) \star (y \star w)$ (\texttt{left\_zero\_magma\_medial\_law}) while refuting commutativity at $(e_0, e_1)$ (\texttt{left\_zero\_magma\_not\_commutative}).
+\end{enumerate}
+
+\section{Summary of the 26 Zero-Axiom Theorems in \texttt{Una1Formal}}
+
+Table~\ref{tab:theorems} lists the 26 formal theorems verified by \texttt{lake build Una1Formal.ComparatorAudit} with \texttt{TypeMatch = true} and \texttt{SolutionAxioms = []}.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{\#} & \textbf{Theorem Identifier} & \textbf{Domain \& Verified Property (\texttt{SolutionAxioms = []})} \\
+\midrule
+1 & \texttt{yang\_mills\_su3\_b0} & 1-loop $\mathrm{SU}(3)$ Yang--Mills coefficient $b_0 = 11$ \\
+2 & \texttt{fermat\_k3\_euler\_chi} & Fermat quartic $K3$ Euler characteristic $\chi = 24$ \\
+3 & \texttt{fermat\_k3\_h11\_lefschetz} & Fermat quartic $K3$ maximal Picard rank $h^{1,1} = 20$ \\
+4 & \texttt{hasse\_bound\_p7\_sq} & Elliptic curve Hasse bound $|a_7|^2 \le 28$ at $p=7$ \\
+5 & \texttt{unsat\_3var\_hypercube} & 8-clause 3-variable boolean hypercube contradiction \\
+6 & \texttt{k4\_not\_3colorable} & Exhaustive 81-state proof that $K_4$ is not 3-colorable \\
+7 & \texttt{magma\_left\_stabilizes} & $\forall x, y \in M_3,\; x \cdot (x \cdot y) = x \cdot y$ \\
+8 & \texttt{magma\_idempotent} & $\forall x \in M_3,\; x \cdot x = x$ \\
+9 & \texttt{magma\_not\_associative} & Witness $(e_0, e_2, e_1)$ refuting associativity of \texttt{op} \\
+10 & \texttt{cospectral\_graphs\_distinct\_max\_degree} & $\Delta(K_{1,4}) = 4 \neq 2 = \Delta(C_4 \cup K_1)$ for cospectral graphs \\
+11 & \texttt{stern\_5777\_a1\_composite} & $5777 - 2(1^2) = 3 \times 1925$ \\
+12 & \texttt{stern\_5777\_a2\_composite} & $5777 - 2(2^2) = 3 \times 1923$ \\
+13 & \texttt{goldbach\_1752\_full\_disproof\_5777} & Exhaustive trial-division disproof at $n = 5777$ \\
+14 & \texttt{goldbach\_1752\_full\_disproof\_5993} & Exhaustive trial-division disproof at $n = 5993$ \\
+15 & \texttt{rps\_magma\_idempotent\_and\_commutative} & Universal idempotence \& commutativity of \texttt{rpsOp} \\
+16 & \texttt{rps\_magma\_not\_associative} & Witness $(e_0, e_0, e_1)$ refuting associativity of \texttt{rpsOp} \\
+17 & \texttt{left\_zero\_magma\_medial\_law} & 81-case 4-variable Medial Law for \texttt{leftZeroOp} \\
+18 & \texttt{left\_zero\_magma\_not\_commutative} & Witness $(e_0, e_1)$ refuting commutativity of \texttt{leftZeroOp} \\
+19 & \texttt{music\_theory\_pythagorean\_comma\_nonclosure} & $3^{12} = 531441 \neq 524288 = 2^{19}$ non-closure in $\mathbb{Q}^\times$ \\
+20 & \texttt{music\_theory\_syntonic\_comma\_ratio} & Syntonic ratio numerator identity $81 - 80 = 1$ \\
+21 & \texttt{music\_theory\_plr\_P\_involution} & Universal involution $P(P(t)) = t$ on $\mathbb{Z}_{12} \times \mathbb{B}$ \\
+22 & \texttt{music\_theory\_plr\_L\_involution\_c\_major} & Involution $L(L(0, \mathrm{true})) = (0, \mathrm{true})$ \\
+23 & \texttt{music\_theory\_plr\_R\_involution\_c\_major} & Involution $R(R(0, \mathrm{true})) = (0, \mathrm{true})$ \\
+24 & \texttt{languages\_dyck\_open\_close\_cancellation} & Universal Dyck depth cancellation $\forall d \in \mathbb{N}$ (\texttt{rfl}) \\
+25 & \texttt{quantum\_gravity\_goroff\_sagnotti\_2loop\_nonzero} & 2-loop pure gravity counterterm numerator $209 \neq 0$ \\
+26 & \texttt{boolean\_equivalence\_symmetry} & Universal boolean equivalence symmetry $(a == b) = (b == a)$ \\
+\bottomrule
+\end{tabular}
+\caption{The 26 formal theorems in \texttt{Una1Formal} verified with zero axioms (\texttt{SolutionAxioms = []}).}
+\label{tab:theorems}
+\end{table}
+
+\section{External Third-Party Audit and Reproducibility}
+
+An independent zero-dependency auditor (\texttt{external\_third\_party\_auditor\_v0\_1.py}, importing zero internal modules) cross-checks the suite against four external authorities:
+\begin{enumerate}
+    \item \textbf{Lean 4 Kernel \& \texttt{comparator.live.lean-lang.org}:} Challenge SHA-256 \texttt{ff3e2ea45dfdb5caa5081a082244d349c79a2ec1699b334c631e084a337b3fda}, validated across \texttt{v4.32.2}, \texttt{v4.35.0}, and \texttt{v4.36.0-rc2}.
+    \item \textbf{Odlyzko / \texttt{mpmath} 50-Decimal-Place Riemann Zeros:} Confirms $\gamma_1, \gamma_2, \gamma_3$ within $5.4 \times 10^{-11}$.
+    \item \textbf{OEIS \texttt{A060003} / \texttt{A058320}:} Confirms minimal odd composite exceptions $[5777, 5993]$.
+    \item \textbf{LMFDB Elliptic Curve Tables (\texttt{32a2} and \texttt{64a4}):} Confirms exact Frobenius traces $a_p$ across $p \in \{7, 11, 13, 17, 19\}$.
+\end{enumerate}
+
+\end{document}

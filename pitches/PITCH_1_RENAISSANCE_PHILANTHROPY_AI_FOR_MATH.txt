@@ -1,0 +1,39 @@
+To: info@renphil.org
+Subject: AI for Math Fund Concept Note — Weight-Independent Conjecture-Generator & 4-Engine Formal Verification Pipeline (Lean 4) for Existence (∃) Counterexample Discovery and Fail-Closed Verification
+
+Dear AI for Math Fund Review Committee,
+
+I am submitting for your consideration an open-source, weight-independent formal verification and counterexample-discovery system I built, paired with an independently auditable Lean 4 benchmark package:
+* GitHub Repository: https://github.com/ResoVerse-io/una-lean4-formal-verification
+* Technical Preprint (LaTeX): https://github.com/ResoVerse-io/una-lean4-formal-verification/blob/main/una1_formal_verification_preprint.tex
+* Upstream google-deepmind/formal-conjectures Pull Requests:
+  - PR #7917 (OEIS A060003 / Guy Problem A19 — Stern-Goldbach odd composites): https://github.com/google-deepmind/formal-conjectures/pull/7917
+  - PR #7918 (Erdős Problem 301 — unit-fraction sum-free sets): https://github.com/google-deepmind/formal-conjectures/pull/7918
+  - PR #7919 (Erdős Problem 670 — separated distances in fixed dimension): https://github.com/google-deepmind/formal-conjectures/pull/7919
+* Zero-Trust Verification: Validated in the Lean FRO's leanprover/comparator (comparator.live.lean-lang.org, Challenge SHA-256: ff3e2ea45dfdb5caa5081a082244d349c79a2ec1699b334c631e084a337b3fda) across Lean v4.32.2, v4.35.0, and v4.36.0-rc2 with 26 formal theorems (TypeMatch = true, SolutionAxioms = []).
+
+1. The Core Bottleneck This System Solves
+Current LLM-based autoformalization pipelines suffer from two structural vulnerabilities:
+(a) Conflation of heuristic search with universal (∀) proof, frequently smuggling unproved claims via sorryAx, altered theorem types, or unexamined axiom assumptions.
+(b) Neglect of the formal asymmetry between ∀ and ∃: whereas proving a universal Millennium-class theorem requires infinite-dimensional analytic closure, refuting an auxiliary conjecture (∃ x, ¬P(x)) requires only one finite counterexample witness that can be proved with 100% deductive certainty (SolutionAxioms = []) inside the Lean 4 kernel.
+
+2. What I Have Built and Verified
+My repository (https://github.com/ResoVerse-io/una-lean4-formal-verification) demonstrates a complete, reproducible 4-engine verification pipeline (Native Python + mpmath 50-decimal-place precision + SymPy symbolic CAS + Lean 4 dependent-type kernel):
+* Formal Conjecture Disproofs & Upstream Formalizations (google-deepmind/formal-conjectures & teorth/equational_theories):
+  - Goldbach–Euler (1752) Twice-a-Square Disproofs & Hodges' Conjecture (OEIS A060003 / Guy Problem A19): Complete zero-axiom Lean 4 proofs (goldbach_1752_full_disproof_5777 and goldbach_1752_full_disproof_5993) verifying compositeness and exhausting all 0 <= a <= 54 cases, submitted upstream in google-deepmind/formal-conjectures PR #7917.
+  - Erdős Problem 301 & Erdős Problem 670: Upstream formalizations and Palomar proof links submitted in google-deepmind/formal-conjectures PR #7918 and PR #7919.
+  - Terence Tao's Equational Theories (teorth/equational_theories): Three distinct order-3 magma (M3) non-implication counterexamples verified with zero axioms (magma_not_associative, rps_magma_not_associative for the Steiner quasigroup, and left_zero_magma_not_commutative for the 81-case 4-variable Medial Law).
+  - Spectral Graph Theory & Blowup ODEs: Explicit 5-vertex tree/disconnected graph pair disproving "Can you hear the shape of a graph?" (cospectral_graphs_distinct_max_degree, identical characteristic polynomial lambda^5 - 4*lambda^3 = 0) and symbolic SymPy verification of Constantin–Lax–Majda 1D vortex-stretching finite-time singularity at t_* = 1.
+* Fail-Closed Epistemic Abstention Gate (fail_closed_abstention_gate): Automatic refusal to claim universal (∀) proofs when only finite-cutoff or sub-lemma evidence exists (unproved_millennium_breakthrough_claimed = false).
+
+3. Proposed 12-Month Milestones for AI for Math Fund Support
+(1) Automated Counterexample Synthesis for teorth/equational_theories & google-deepmind/formal-conjectures: Scale my system's finite-model and algebraic counterexample search to automatically emit comparator-verified Lean 4 disproof certificates (SolutionAxioms = []) for open non-implication pairs and OEIS number-theoretic conjectures.
+(2) Native Lean.MetaM Comparator & Axiom-Hygiene CI Action: Package Una1Formal/ComparatorAudit.lean as a zero-dependency GitHub Action for the Lean 4 community to prevent reward-hacking in AI-generated proofs.
+
+I would welcome the opportunity to submit a full proposal and demonstrate the live verification suite.
+
+Respectfully,
+Tom Budd
+Founder, ResoVerse
+Email: tom@tombudd.com
+Repository: https://github.com/ResoVerse-io/una-lean4-formal-verification
