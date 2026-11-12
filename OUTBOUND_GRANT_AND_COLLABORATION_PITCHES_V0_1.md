@@ -48,15 +48,17 @@ Repository: [https://github.com/ResoVerse-io/una-lean4-formal-verification](http
 
 ## Pitch 2: Lean FRO (`lean-beam` / Year 4 Roadmap) & Lean Prover Zulip (`#AI` / `#Formal-conjectures`) Post
 
-**Title / Topic:** OEIS A060003 PR (`#7917`) + Zero-Axiom `comparator` Audit Suite (26 Theorems, `SolutionAxioms = []`)
+**Title / Topic:** `OEIS A060003 PR (#7917) — Formalized & Verified by UNA-1 (Request for Community Verification)`
 
 **Message Body (Copy-Paste for Lean Zulip `#AI` or `#Formal-conjectures`):**
 
 Hi everyone! 👋
 
-We just opened **[PR `#7917` on `google-deepmind/formal-conjectures`](https://github.com/google-deepmind/formal-conjectures/pull/7917)** adding `FormalConjectures/OEIS/60003.lean` (Hodges' Conjecture / Richard K. Guy's *Unsolved Problems in Number Theory* Problem A19 on odd composite Stern numbers not of the form $p + 2a^2$, together with `decide +kernel` proofs for the two known counterexamples $5777$ and $5993$ and the formal disproof of Goldbach's 1752 conjecture).
+I just opened **[PR `#7917` on `google-deepmind/formal-conjectures`](https://github.com/google-deepmind/formal-conjectures/pull/7917)** adding `FormalConjectures/OEIS/60003.lean` (Hodges' Conjecture / Richard K. Guy's *Unsolved Problems in Number Theory* Problem A19 on odd composite Stern numbers not of the form $p + 2a^2$, together with `decide +kernel` proofs for the two known counterexamples $5777$ and $5993$ and the formal disproof of Goldbach's 1752 conjecture).
 
-Alongside PR `#7917`, following the **Lean FRO Year 4 Roadmap** (`lean-beam` and `leanprover/comparator`), we also open-sourced a standalone, zero-dependency Lean 4 verification benchmark and native `MetaM` comparator auditor:
+This counterexample search, formalization, and zero-axiom verification were produced by **UNA-1**, a weight-independent mathematical discovery and formal verification system I built that pairs a candidate conjecture generator with a 4-engine deterministic verification pipeline (`Lean 4` kernel + `SymPy` symbolic CAS + `mpmath` 50-decimal-place analysis + native Python) and a fail-closed epistemic abstention gate.
+
+Alongside PR `#7917`, I also open-sourced UNA-1's standalone, zero-dependency Lean 4 verification benchmark and native `Lean.MetaM` comparator auditor:
 
 🔗 **GitHub Repository:** [https://github.com/ResoVerse-io/una-lean4-formal-verification](https://github.com/ResoVerse-io/una-lean4-formal-verification)
 
@@ -70,7 +72,7 @@ Alongside PR `#7917`, following the **Lean FRO Year 4 Roadmap** (`lean-beam` and
      * **Part II (6 theorems — `formal-conjectures` & `equational_theories`):** Full 54-case decidable trial-division disproofs of Goldbach's 1752 twice-a-square conjecture at $n = 5777$ and $n = 5993$ (OEIS `A060003`), plus 3 order-3 magma non-implication disproofs (left-stabilizing idempotent, Steiner quasigroup, and 81-case 4-variable Medial Law).
      * **Part III (8 theorems — Discrete & Algebraic Invariants):** $3^{12} \neq 2^{19}$ non-closure in $\mathbb{Q}^\times$, $\mathbb{Z}_{12} \times \mathbb{B}$ dihedral involutions ($P, L, R$), context-free Dyck balanced-bracket depth cancellation (`rfl`), Goroff–Sagnotti 2-loop numerator ($209 \neq 0$), and boolean equivalence symmetry.
 
-Feedback and reviews on [PR `#7917`](https://github.com/google-deepmind/formal-conjectures/pull/7917) are very welcome!
+We are actively seeking independent community verification and review of UNA-1's formalizations and zero-axiom proofs—both on [PR `#7917`](https://github.com/google-deepmind/formal-conjectures/pull/7917) and across the 26-theorem comparator suite (`lake build Una1Formal.ComparatorAudit` or via `comparator.live.lean-lang.org`). Any feedback, edge-case critiques, or verification checks from the community would be greatly appreciated!
 
 ---
 
