@@ -346,7 +346,8 @@ def audit_clm_and_degregorio_self_similar_blowup() -> dict[str, Any]:
 
 def verify_counterexamples_in_lean4_kernel() -> dict[str, Any]:
     """Compile and type-check formal existence (∃) disproof theorems in the Lean 4 kernel."""
-    lean_bin = UNA_ROOT / ".toolchains/elan/bin/lean"
+    import shutil
+    lean_bin = Path(shutil.which("lean") or str(UNA_ROOT / ".toolchains/elan/bin/lean"))
     lean_code = "\n".join([
         "-- 1. Finite Magma Counterexample: T(x,y) = [[0,1,0],[0,1,0],[0,0,2]] satisfies x*(x*y) = x*y & x*x = x, yet (0*2)*1 != 0*(2*1)",
         "inductive M3 | e0 | e1 | e2 deriving DecidableEq",

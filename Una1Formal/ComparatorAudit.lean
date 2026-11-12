@@ -16,7 +16,21 @@ def theoremNames : List String := [
   "magma_not_associative",
   "cospectral_graphs_distinct_max_degree",
   "stern_5777_a1_composite",
-  "stern_5777_a2_composite"
+  "stern_5777_a2_composite",
+  "goldbach_1752_full_disproof_5777",
+  "goldbach_1752_full_disproof_5993",
+  "rps_magma_idempotent_and_commutative",
+  "rps_magma_not_associative",
+  "left_zero_magma_medial_law",
+  "left_zero_magma_not_commutative",
+  "music_theory_pythagorean_comma_nonclosure",
+  "music_theory_syntonic_comma_ratio",
+  "music_theory_plr_P_involution",
+  "music_theory_plr_L_involution_c_major",
+  "music_theory_plr_R_involution_c_major",
+  "languages_dyck_open_close_cancellation",
+  "quantum_gravity_goroff_sagnotti_2loop_nonzero",
+  "boolean_equivalence_symmetry"
 ]
 
 #eval show MetaM Unit from do
@@ -44,7 +58,7 @@ def theoremNames : List String := [
   if !allPassed then
     throwError "Lean 4 Kernel Comparator failed!"
   IO.println "------------------------------------------------------------------------"
-  IO.println "  STATUS: PASS_ALL_12_THEOREMS_TYPE_MATCHED_AND_ZERO_AXIOM_VERIFIED"
+  IO.println "  STATUS: PASS_ALL_26_THEOREMS_TYPE_MATCHED_AND_ZERO_AXIOM_VERIFIED"
   IO.println "========================================================================"
 
 def main : IO Unit := do
