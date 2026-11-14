@@ -1,6 +1,6 @@
 {
   "schema": "UNA1_LEAN4_WORKSPACE_CUSTODY_MANIFEST_V1",
-  "sealed_utc": "2026-11-14T18:41:52.991621+00:00",
+  "sealed_utc": "2026-11-14T19:27:31.671502+00:00",
   "repo_root": ".",
   "git_permissions": {
     "git_dir_exists": true,
@@ -20,8 +20,8 @@
       "bytes": 363
     },
     "Challenge.lean": {
-      "sha256": "f1f1275dc825366f728c45f9328833dd0d06868d9e0e3db253dfad134b348530",
-      "bytes": 6045
+      "sha256": "c121b47afacf1da5fbb359922227fa349f48d93cefca9f99dd6554588ef0d28c",
+      "bytes": 6007
     },
     "FormalConjectures_OEIS_A060003_PR_Ready.lean": {
       "sha256": "72210e8d37f921f7d732ed704bc1224539eeafcc0abd15bd3eaf06f43f00db98",
@@ -32,8 +32,8 @@
       "bytes": 635
     },
     "README.md": {
-      "sha256": "a557c0df27418cf8deb577a40e0e0ee67fc424e87857930def96941d211ef960",
-      "bytes": 11792
+      "sha256": "d3e11436a904588c51a2687ad4d3ae44631b5f3274f17848ca812c8b6425ee17",
+      "bytes": 12565
     },
     "Solution.lean": {
       "sha256": "063f2053d8b982358392fa374a7aab81f6f8bf64da31abe85d5d9f234a3580dc",
@@ -68,8 +68,8 @@
       "bytes": 10329
     },
     "formalization.yaml": {
-      "sha256": "b4bcbd76d3e3272c7d0713cb6b40589f32d854798f1e9c927d0eabfdfc555366",
-      "bytes": 2962
+      "sha256": "d86378adba9896641a99be3d6c2e8d6fbd6123e606f765128be6d490f25270dc",
+      "bytes": 3638
     },
     "lake-manifest.json": {
       "sha256": "644a4f3d1472a6d812f43f999c64db18e9abf85fd9275998c9fa59d8db742297",
@@ -140,5 +140,5 @@
       "bytes": 14294
     }
   },
-  "manifest_sha256": "93bded3382db8a6b32d0a579da136d0388206d0e1ecef2f3b6e5210f51844f88"
+  "manifest_sha256": "66caa2b07786a16c67ebf9fb646e6a813444016a2dae753fd6e2bb711eef9ab2"
 }

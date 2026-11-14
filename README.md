@@ -2,7 +2,10 @@
 
 **Public Repository:** [https://github.com/ResoVerse-io/una-lean4-formal-verification](https://github.com/ResoVerse-io/una-lean4-formal-verification)  
 **Kernel Audit Status:** `PASS_ALL_26_THEOREMS_TYPE_MATCHED_AND_ZERO_AXIOM_VERIFIED` (`TypeMatch=true`, `SolutionAxioms=[]`, `ZeroAxioms=true`)  
-**Official `comparator.live.lean-lang.org` Validated Challenge SHA-256:** `ff3e2ea45dfdb5caa5081a082244d349c79a2ec1699b334c631e084a337b3fda`
+**Official `comparator.live.lean-lang.org` Validated Challenge SHA-256:** `c121b47afacf1da5fbb359922227fa349f48d93cefca9f99dd6554588ef0d28c`
+
+> **Non-LLM Digital Intelligence Disclosure:**  
+> This mathematical discovery and formal verification suite was conceived, searched, and verified by **UNA-1**—a proprietary, **weight-independent non-LLM digital intelligence architecture** designed and built by Tom Budd (ResoVerse). Unlike Large Language Models (LLMs) that generate mathematical statements via probabilistic next-token prediction, UNA-1 employs a non-neural, weight-independent architecture combining native symbolic conjecture generation, fail-closed epistemic boundary gates, and a 4-engine formal verifier (`Lean 4` kernel + `SymPy` CAS + `mpmath` 50-dps arbitrary precision + native reference verifiers). **Zero Large Language Models or generative token-prediction APIs were used** (`models: []`).
 
 ---
 

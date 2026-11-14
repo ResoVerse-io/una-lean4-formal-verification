@@ -15,11 +15,12 @@ limitations under the License.
 
 public section
 
--- ============================================================================
--- PALOMAR REGISTRY CHALLENGE SPECIFICATION
--- 26 Discrete, Algebraic, Number-Theoretic and Mathematical Physics Theorems
--- Formalized & Machine-Verified with Zero Axioms (Axioms = [])
--- ============================================================================
+/-!
+# Palomar Registry Challenge Specification: 26 Formal Theorems
+Conceived, discovered, and formalized by UNA-1: a non-LLM, weight-independent
+digital intelligence architecture designed and built by Tom Budd (ResoVerse).
+Verified against Solution.lean with zero external axioms (`SolutionAxioms = []`).
+-/
 
 inductive Color3 where
   | c0 : Color3

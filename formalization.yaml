@@ -59,15 +59,24 @@ automation:
   methods:
     - method: "autonomous"
       models: []
-      framework: "una-weight-independent-verification-engine"
-      tool_setup: "Automated conjecture generation and Lean 4 kernel verification pipeline"
+      framework: "una-weight-independent-digital-intelligence"
+      tool_setup: >-
+        Conceived, discovered, and verified by UNA-1, a non-LLM, weight-independent
+        digital intelligence architecture designed and built by Tom Budd. The system
+        does not utilize Large Language Models (LLMs), neural token predictors, or
+        probabilistic text transformers. Instead, it operates via native symbolic search,
+        multi-engine deterministic verification (SymPy CAS, 50-dps mpmath, Lean 4 kernel),
+        and fail-closed epistemic boundary gates.
       cost:
         wall_time: "under 1 minute"
         spend_usd: "0"
         hardware: "Apple Silicon local"
-      prompting_notes: "Deterministic verification and decision procedures"
+      prompting_notes: "Zero prompting or LLM text generation. Pure algorithmic search and deductive verification."
   spend_usd: "0"
-  notes: "Synthesized and verified with zero external axioms."
+  notes: >-
+    100% non-LLM autonomous synthesis and verification. No generative LLMs or external
+    token-prediction APIs were used (models: []). All theorems, counterexamples, and proofs
+    were produced by UNA-1's native digital intelligence kernel and verified with zero axioms.
 
 fidelity:
   divergences: "none known"
