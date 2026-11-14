@@ -1,0 +1,18 @@
+{
+  "schema": "VERITAS_M1_VLSI1_RTL_VERIFICATION_RECEIPT_V1",
+  "status": "PASS_VERITAS_M1_RNS_NTT_ALU_RTL_AND_TESTBENCH_VERIFIED",
+  "rtl": {
+    "rtl_path": "hardware/veritas_m1_rns_ntt_alu.sv",
+    "rtl_sha256": "d75667c4ca0cf64390fa5e9fac0a8630fa52279787db9a178c885df5783866b0",
+    "rtl_bytes": 7562,
+    "line_count": 204,
+    "synthesizable_structure_ok": true
+  },
+  "simulation": {
+    "rns_add_mul_vectors_passed": 410,
+    "ntt_256pt_butterfly_cycles_passed": 2048,
+    "q_cross_verify_cases_passed": 2,
+    "revoked_kill_switch_fail_closed_verified": true
+  },
+  "receipt_sha256": "e8299fb28d07c611418010154711780926f16175a553cab2c7ea52f80aabaa6b"
+}

@@ -74,8 +74,6 @@ cd una-lean4-formal-verification
 | `Una1Formal/Solution.lean` | Candidate solution proving all 26 theorems with **zero axioms** (`SolutionAxioms = []`, `ZeroAxioms = true`) |
 | `Una1Formal/ComparatorAudit.lean` | Programmatic `Lean.MetaM` kernel comparator verifying `cInfo.type == sInfo.type` and `Lean.collectAxioms == []` at build time |
 | `FormalConjectures_OEIS_A060003_PR_Ready.lean` | Pull Request module (`FormalConjectures/OEIS/60003.lean`, submitted in [PR `#7917`](https://github.com/google-deepmind/formal-conjectures/pull/7917)) for `google-deepmind/formal-conjectures` formalizing Hodges' Conjecture / Guy Problem A19 with proved test cases `5777` and `5993` |
-| `OUTBOUND_GRANT_AND_COLLABORATION_PITCHES_V0_1.md` | Outbound grant proposals and collaboration pitches for **Renaissance Philanthropy (*AI for Math Fund*)**, **Lean FRO (`lean-beam` / Zulip `#AI`)**, and **DARPA I2O (`expMath`)** |
-| `DARPA_EXPMATH_AND_AI_FOR_MATH_GRANT_PROPOSAL_V0_1.md` | Full DARPA `expMath` & AI-for-Mathematics technical proposal (Heilmeier Catechism + Non-Serial MECE Specific Aims) |
 | `external_third_party_auditor_v0_1.py` | Zero-UNA-dependency third-party black-box auditor cross-checking Lean 4, `SymPy` symbolic CAS, `mpmath` 50-decimal-place Riemann zeros, OEIS `A058320`/`A060003`, and LMFDB (`32a2`, `64a4`) |
 | `UNA1_Comparator_Challenge.lean` & `UNA1_Comparator_Solution.lean` | Standalone paste-ready files validated on `https://comparator.live.lean-lang.org` |
 

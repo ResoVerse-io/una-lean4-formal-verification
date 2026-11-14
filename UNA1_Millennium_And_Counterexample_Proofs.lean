@@ -9,7 +9,7 @@
   External Zero-Install Verification:
   1. Paste this entire file into the official Lean 4 Web Playground: https://live.lean-lang.org
   2. Or run locally with standard Lean 4:
-     /Users/tomstudio/UNA/.toolchains/elan/bin/lean /Users/tomstudio/UNA/state/audits/ultracode_preflight_candidates/alien_yang_mills_constructive_20261110/UNA1_Millennium_And_Counterexample_Proofs.lean
+     lean UNA1_Millennium_And_Counterexample_Proofs.lean
 -/
 
 -- ============================================================================

@@ -3,3 +3,32 @@
 __pycache__/
 *.pyc
 .DS_Store
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*secret*
+*credential*
+founder_packets/
+
+# Security, Credentials, and Secrets Protection
+*.env*
+*.key
+*.pem
+*.cert
+*.p12
+*.token
+*secret*
+*credential*
+credentials/
+secrets/
+
+# Proprietary Proposals, Grant Drafts, and Private Pitches
+pitches/
+*GRANT*
+*PITCH*
+*PROPOSAL*
+*.draft
+*.bak
+*.swp

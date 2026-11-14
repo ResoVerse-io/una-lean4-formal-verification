@@ -21,17 +21,20 @@ import subprocess
 import sys
 from pathlib import Path
 
-# Allow standalone execution with the local virtualenv's sympy/mpmath without importing any UNA modules
-VENV_SITE = Path("/Users/tomstudio/UNA/.venv/lib/python3.13/site-packages")
-if VENV_SITE.is_dir() and str(VENV_SITE) not in sys.path:
-    sys.path.insert(0, str(VENV_SITE))
+# Allow standalone execution with standard site-packages or virtualenv
+for _site in [Path.home() / ".venv/lib/python3.13/site-packages", Path.home() / "UNA/.venv/lib/python3.13/site-packages"]:
+    if _site.is_dir() and str(_site) not in sys.path:
+        sys.path.insert(0, str(_site))
 
 import mpmath
 import sympy
 from sympy.logic.inference import satisfiable
 
 CANDIDATE_DIR = Path(__file__).resolve().parent
-LEAN_BIN = Path( __import__("shutil").which("lean") or "/Users/tomstudio/UNA/.toolchains/elan/bin/lean" )
+_lean_which = __import__("shutil").which("lean") or str(Path.home() / ".elan/bin/lean")
+if not Path(_lean_which).is_file() and (Path.home() / "UNA/.toolchains/elan/bin/lean").is_file():
+    _lean_which = str(Path.home() / "UNA/.toolchains/elan/bin/lean")
+LEAN_BIN = Path(_lean_which)
 LEAN_PROOF_FILE = CANDIDATE_DIR / "UNA1_Millennium_And_Counterexample_Proofs.lean"
 
 

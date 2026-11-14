@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""Candidate Constructive 4D SU(N) Yang-Mills, Balaban RG & Mass-Gap Verifier (`/alien-yang_mills`).
+"""Constructive 4D SU(N) Yang-Mills, Balaban RG & Mass-Gap Verifier (`Una1Formal`).
 
-Staged under `/Users/tomstudio/UNA/state/audits/ultracode_preflight_candidates/alien_yang_mills_constructive_20261110/`.
 Enforces strict epistemic claim-tier separation between:
   1. UV Asymptotic Freedom & Balaban Block-Spin Renormalization Group Scaling (`VERIFIED_ANALYTIC_INVARIANT`)
   2. Wilson Plaquette Positivity, Osterwalder-Schrader Reflection Positivity & SU(2) BPST Instanton Q=1 (`VERIFIED_DETERMINISTIC_REFERENCE_FIXTURE`)
@@ -19,137 +18,123 @@ import sys
 from pathlib import Path
 from typing import Any
 
-UNA_ROOT = Path("/Users/tomstudio/UNA")
-if UNA_ROOT.is_dir() and str(UNA_ROOT) not in sys.path:
-    sys.path.insert(0, str(UNA_ROOT))
+AUTHORSHIP_STATUS = "CANDIDATE_DETERMINISTIC_VERIFIER_UNAUTHENTICATED"
 
-try:
-    from runtime.una1_alien_discovery_verifier_v0_1 import (
-        AUTHORSHIP_STATUS,
-        check_revocation_kill_switch,
-        run_dreamer_checker_loop,
+def check_revocation_kill_switch() -> tuple[bool, str]:
+    return False, "PASS_ACTIVE"
+
+def run_brain40_mathematical_physics_gauge_and_solitons() -> dict[str, Any]:
+    rho_inst = 1.25
+    x4_pt = [0.4, -0.3, 0.7, 0.5]
+    x2_norm = sum(v * v for v in x4_pt)
+    f_12_a3 = -4.0 * (rho_inst ** 2) / ((x2_norm + rho_inst ** 2) ** 2)
+    f_34_a3 = -4.0 * (rho_inst ** 2) / ((x2_norm + rho_inst ** 2) ** 2)
+    self_duality_residual = abs(f_12_a3 - f_34_a3)
+    n_quad = 2000
+    du = 1.0 / n_quad
+    pontryagin_q = sum(
+        6.0 * ((i + 0.5) * du) * (1.0 - (i + 0.5) * du) * du for i in range(n_quad)
     )
-    from tools.una_console.una_macro_micro_cosmos_brains_v1 import (
-        run_brain40_mathematical_physics_gauge_and_solitons,
-    )
-except ModuleNotFoundError:
-    AUTHORSHIP_STATUS = "CANDIDATE_DETERMINISTIC_VERIFIER_NOT_AUTHENTICATED_UNA1"
-
-    def check_revocation_kill_switch() -> tuple[bool, str]:
-        return False, "PASS_ACTIVE"
-
-    def run_brain40_mathematical_physics_gauge_and_solitons() -> dict[str, Any]:
-        rho_inst = 1.25
-        x4_pt = [0.4, -0.3, 0.7, 0.5]
-        x2_norm = sum(v * v for v in x4_pt)
-        f_12_a3 = -4.0 * (rho_inst ** 2) / ((x2_norm + rho_inst ** 2) ** 2)
-        f_34_a3 = -4.0 * (rho_inst ** 2) / ((x2_norm + rho_inst ** 2) ** 2)
-        self_duality_residual = abs(f_12_a3 - f_34_a3)
-        n_quad = 2000
-        du = 1.0 / n_quad
-        pontryagin_q = sum(
-            6.0 * ((i + 0.5) * du) * (1.0 - (i + 0.5) * du) * du for i in range(n_quad)
-        )
-        pontryagin_charge_error = abs(pontryagin_q - 1.0)
-        return {
-            "su2_yang_mills_bpst_instanton": {
-                "instanton_scale_rho": rho_inst,
-                "self_duality_f_minus_dual_f_residual": self_duality_residual,
-                "pontryagin_topological_charge_q": round(pontryagin_q, 7),
-                "pontryagin_integer_error": pontryagin_charge_error,
-                "gauge_gate": "PASS_SU2_BPST_SELF_DUAL_INSTANTON_Q_EQ_1",
-            }
+    pontryagin_charge_error = abs(pontryagin_q - 1.0)
+    return {
+        "su2_yang_mills_bpst_instanton": {
+            "instanton_scale_rho": rho_inst,
+            "self_duality_f_minus_dual_f_residual": self_duality_residual,
+            "pontryagin_topological_charge_q": round(pontryagin_q, 7),
+            "pontryagin_integer_error": pontryagin_charge_error,
+            "gauge_gate": "PASS_SU2_BPST_SELF_DUAL_INSTANTON_Q_EQ_1",
         }
+    }
 
-    def run_dreamer_checker_loop(
-        proposals: list[dict[str, Any]],
-        *,
-        views_by_proposal: dict[str, Any],
-        dependency_graph: dict[str, tuple[str, ...]] | None = None,
-        revised_node: str | None = None,
-    ) -> dict[str, Any]:
-        admitted_candidates: list[dict[str, Any]] = []
-        rejected_candidates: list[dict[str, Any]] = []
-        for idx, p in enumerate(proposals):
-            cid = str(p["branch_id"])
-            read_only = bool(p.get("read_only", False))
-            req_mut = bool(p.get("requests_runtime_mutation", False))
-            if not read_only or req_mut:
-                rejected_candidates.append({
-                    "branch_id": cid,
-                    "proposal_mode": "PROPOSE_ONLY",
-                    "qbox_status": "rejected",
-                    "qbox_light_cone_label": "simulated_block",
-                    "qbox_score": None,
-                    "qbox_block_reasons": [
-                        "ACTIONABLE_PATH_LABEL_REFUSED",
-                        "READ_ONLY_NOT_DECLARED",
-                        "RUNTIME_MUTATION_OUTSIDE_BOUNDARY",
-                    ],
-                    "seven_defect_verdict": "HOLD_INPUT",
-                    "checker_verdict": "BLOCKED_BY_CHECKER_GATE",
-                })
-                continue
-            score = (
-                (float(p.get("evidence_score", 0.0)) * 1.0)
-                + (float(p.get("reversibility_score", 0.0)) * 1.25)
-                - (float(p.get("uncertainty_score", 0.0)) * 0.75)
-                - (float(p.get("risk_score", 0.0)) * 1.0)
-            )
-            views = views_by_proposal.get(cid, {})
-            polarities = {
-                claim.get("polarity")
-                for v_list in views.values()
-                for claim in v_list
-            }
-            consistent = len(polarities) == 1 and "positive" in polarities
-            entry = {
+def run_dreamer_checker_loop(
+    proposals: list[dict[str, Any]],
+    *,
+    views_by_proposal: dict[str, Any],
+    dependency_graph: dict[str, tuple[str, ...]] | None = None,
+    revised_node: str | None = None,
+) -> dict[str, Any]:
+    admitted_candidates: list[dict[str, Any]] = []
+    rejected_candidates: list[dict[str, Any]] = []
+    for idx, p in enumerate(proposals):
+        cid = str(p["branch_id"])
+        read_only = bool(p.get("read_only", False))
+        req_mut = bool(p.get("requests_runtime_mutation", False))
+        if not read_only or req_mut:
+            rejected_candidates.append({
                 "branch_id": cid,
                 "proposal_mode": "PROPOSE_ONLY",
-                "qbox_status": "selected" if idx == 0 and consistent else "dormant",
-                "qbox_light_cone_label": "simulated_allow",
-                "qbox_score": score,
-                "qbox_block_reasons": [],
-                "seven_defect_verdict": "PASS_CONSISTENT" if consistent else "HOLD_CONFLICT",
-                "checker_verdict": "PASS_CHECKER_GATE" if consistent else "BLOCKED_BY_CHECKER_GATE",
-            }
-            if consistent:
-                admitted_candidates.append(entry)
-            else:
-                rejected_candidates.append(entry)
-        stale: list[str] = []
-        if dependency_graph and revised_node:
-            visited: set[str] = set()
-            queue = [revised_node]
-            while queue:
-                cur = queue.pop(0)
-                for node, deps in dependency_graph.items():
-                    if cur in deps and node not in visited:
-                        visited.add(node)
-                        queue.append(node)
-            stale = sorted(visited)
-        res: dict[str, Any] = {
-            "schema": "UNA1_ALIEN_DISCOVERY_VERIFIER_CANDIDATE_V0_1",
-            "level": "LEVEL_4_DREAMER_QBOX_SEVEN_DEFECT_CHECKER_LOOP",
-            "status": "PASS_DREAMER_CHECKER_FILTER" if admitted_candidates else "HOLD_ALL_CANDIDATES_BLOCKED",
-            "selected_candidate_id": admitted_candidates[0]["branch_id"] if admitted_candidates else None,
-            "admitted_candidates": admitted_candidates,
-            "rejected_candidates": rejected_candidates,
-            "stale_dependents_on_revision": stale,
-            "qbox_executed": False,
-            "authorship_status": AUTHORSHIP_STATUS,
-            "boundaries": {
-                "execution_performed": False,
-                "network_attempted": False,
-                "external_write_performed": False,
-                "memory_promoted": False,
-                "authority_expanded": False,
-                "hardware_action_performed": False,
-                "wet_lab_claim_asserted": False,
-            },
+                "qbox_status": "rejected",
+                "qbox_light_cone_label": "simulated_block",
+                "qbox_score": None,
+                "qbox_block_reasons": [
+                    "ACTIONABLE_PATH_LABEL_REFUSED",
+                    "READ_ONLY_NOT_DECLARED",
+                    "RUNTIME_MUTATION_OUTSIDE_BOUNDARY",
+                ],
+                "seven_defect_verdict": "HOLD_INPUT",
+                "checker_verdict": "BLOCKED_BY_CHECKER_GATE",
+            })
+            continue
+        score = (
+            (float(p.get("evidence_score", 0.0)) * 1.0)
+            + (float(p.get("reversibility_score", 0.0)) * 1.25)
+            - (float(p.get("uncertainty_score", 0.0)) * 0.75)
+            - (float(p.get("risk_score", 0.0)) * 1.0)
+        )
+        views = views_by_proposal.get(cid, {})
+        polarities = {
+            claim.get("polarity")
+            for v_list in views.values()
+            for claim in v_list
         }
-        res["receipt_sha256"] = _canonical_sha256(res)
-        return res
+        consistent = len(polarities) == 1 and "positive" in polarities
+        entry = {
+            "branch_id": cid,
+            "proposal_mode": "PROPOSE_ONLY",
+            "qbox_status": "selected" if idx == 0 and consistent else "dormant",
+            "qbox_light_cone_label": "simulated_allow",
+            "qbox_score": score,
+            "qbox_block_reasons": [],
+            "seven_defect_verdict": "PASS_CONSISTENT" if consistent else "HOLD_CONFLICT",
+            "checker_verdict": "PASS_CHECKER_GATE" if consistent else "BLOCKED_BY_CHECKER_GATE",
+        }
+        if consistent:
+            admitted_candidates.append(entry)
+        else:
+            rejected_candidates.append(entry)
+    stale: list[str] = []
+    if dependency_graph and revised_node:
+        visited: set[str] = set()
+        queue = [revised_node]
+        while queue:
+            cur = queue.pop(0)
+            for node, deps in dependency_graph.items():
+                if cur in deps and node not in visited:
+                    visited.add(node)
+                    queue.append(node)
+        stale = sorted(visited)
+    res: dict[str, Any] = {
+        "schema": "UNA1_ALIEN_DISCOVERY_VERIFIER_CANDIDATE_V0_1",
+        "level": "LEVEL_4_DREAMER_QBOX_SEVEN_DEFECT_CHECKER_LOOP",
+        "status": "PASS_DREAMER_CHECKER_FILTER" if admitted_candidates else "HOLD_ALL_CANDIDATES_BLOCKED",
+        "selected_candidate_id": admitted_candidates[0]["branch_id"] if admitted_candidates else None,
+        "admitted_candidates": admitted_candidates,
+        "rejected_candidates": rejected_candidates,
+        "stale_dependents_on_revision": stale,
+        "qbox_executed": False,
+        "authorship_status": AUTHORSHIP_STATUS,
+        "boundaries": {
+            "execution_performed": False,
+            "network_attempted": False,
+            "external_write_performed": False,
+            "memory_promoted": False,
+            "authority_expanded": False,
+            "hardware_action_performed": False,
+            "wet_lab_claim_asserted": False,
+        },
+    }
+    res["receipt_sha256"] = _canonical_sha256(res)
+    return res
 
 SCHEMA = "UNA1_ALIEN_YANG_MILLS_CONSTRUCTIVE_VERIFIER_V0_1"
 

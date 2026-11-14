@@ -40,8 +40,6 @@ from typing import Any
 
 SCHEMA = "UNA1_COUNTEREXAMPLE_AND_BLOWUP_HUNTER_V0_1"
 AUTHORSHIP_STATUS = "CANDIDATE_DETERMINISTIC_VERIFIER_NOT_AUTHENTICATED_UNA1"
-UNA_ROOT = Path("/Users/tomstudio/UNA")
-
 
 def _canonical_sha256(payload: Any) -> str:
     encoded = json.dumps(payload, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
@@ -49,9 +47,9 @@ def _canonical_sha256(payload: Any) -> str:
 
 
 def _ensure_venv_site() -> None:
-    venv_site = UNA_ROOT / ".venv/lib/python3.13/site-packages"
-    if venv_site.is_dir() and str(venv_site) not in sys.path:
-        sys.path.insert(0, str(venv_site))
+    for _site in [Path.home() / ".venv/lib/python3.13/site-packages", Path.home() / "UNA/.venv/lib/python3.13/site-packages"]:
+        if _site.is_dir() and str(_site) not in sys.path:
+            sys.path.insert(0, str(_site))
 
 
 # ============================================================================
@@ -347,7 +345,10 @@ def audit_clm_and_degregorio_self_similar_blowup() -> dict[str, Any]:
 def verify_counterexamples_in_lean4_kernel() -> dict[str, Any]:
     """Compile and type-check formal existence (∃) disproof theorems in the Lean 4 kernel."""
     import shutil
-    lean_bin = Path(shutil.which("lean") or str(UNA_ROOT / ".toolchains/elan/bin/lean"))
+    _lean_which = shutil.which("lean") or str(Path.home() / ".elan/bin/lean")
+    if not Path(_lean_which).is_file() and (Path.home() / "UNA/.toolchains/elan/bin/lean").is_file():
+        _lean_which = str(Path.home() / "UNA/.toolchains/elan/bin/lean")
+    lean_bin = Path(_lean_which)
     lean_code = "\n".join([
         "-- 1. Finite Magma Counterexample: T(x,y) = [[0,1,0],[0,1,0],[0,0,2]] satisfies x*(x*y) = x*y & x*x = x, yet (0*2)*1 != 0*(2*1)",
         "inductive M3 | e0 | e1 | e2 deriving DecidableEq",

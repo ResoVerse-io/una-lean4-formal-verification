@@ -484,7 +484,7 @@ def verify_3engine_independent_cross_check() -> dict[str, Any]:
     """Cross-verify the 7 Millennium Prize sub-lemma equations against 3 independent local engines:
     1. mpmath (50-decimal-place arbitrary-precision `zetazero` & `siegelz`)
     2. SymPy 1.14.0 (symbolic CAS for su(2) Lie commutator, SU(3) beta_0, 3D Navier-Stokes Beltrami divergence & stretching, S^3 Ricci flow, and SAT `satisfiable`)
-    3. Lean 4 Formal Theorem Prover Kernel (`/Users/tomstudio/UNA/.toolchains/elan/bin/lean --stdin`)
+    3. Lean 4 Formal Theorem Prover Kernel (`lean --stdin`)
     """
     global _THREE_ENGINE_CROSS_CHECK_CACHE
     if _THREE_ENGINE_CROSS_CHECK_CACHE is not None:
@@ -492,9 +492,9 @@ def verify_3engine_independent_cross_check() -> dict[str, Any]:
 
     import subprocess
 
-    venv_site = Path("/Users/tomstudio/UNA/.venv/lib/python3.13/site-packages")
-    if venv_site.is_dir() and str(venv_site) not in sys.path:
-        sys.path.insert(0, str(venv_site))
+    for _site in [Path.home() / ".venv/lib/python3.13/site-packages", Path.home() / "UNA/.venv/lib/python3.13/site-packages"]:
+        if _site.is_dir() and str(_site) not in sys.path:
+            sys.path.insert(0, str(_site))
 
     import mpmath
     import sympy
@@ -560,7 +560,10 @@ def verify_3engine_independent_cross_check() -> dict[str, Any]:
     )
     sympy_unsat_cube_verified = satisfiable(unsat_cube_expr) is False
 
-    lean_bin = Path( __import__("shutil").which("lean") or "/Users/tomstudio/UNA/.toolchains/elan/bin/lean" )
+    _lean_which = __import__("shutil").which("lean") or str(Path.home() / ".elan/bin/lean")
+    if not Path(_lean_which).is_file() and (Path.home() / "UNA/.toolchains/elan/bin/lean").is_file():
+        _lean_which = str(Path.home() / "UNA/.toolchains/elan/bin/lean")
+    lean_bin = Path(_lean_which)
     lean_code = "\n".join(
         [
             "theorem yang_mills_su3_b0 : 11 * 3 / 3 = 11 := rfl",

@@ -1,0 +1,144 @@
+{
+  "schema": "UNA1_LEAN4_WORKSPACE_CUSTODY_MANIFEST_V1",
+  "sealed_utc": "2026-11-14T18:41:52.991621+00:00",
+  "repo_root": ".",
+  "git_permissions": {
+    "git_dir_exists": true,
+    "mode_octal": "0700",
+    "owner_only_0700": true
+  },
+  "file_count": 31,
+  "prerequisite_gates": {
+    "1_revocation_kill_switch": "PASS_NO_REVOCATION_MARKER",
+    "2_secret_and_protected_path_scan": "PASS_ZERO_SECRETS_AND_PROTECTED_PATH_LEAKS",
+    "3_lean4_zero_axiom_and_sorry_gate": "PASS_ZERO_SORRY_AND_ZERO_AXIOM_VERIFIED",
+    "4_hardware_rtl_and_testbench_gate": "PASS_VERITAS_M1_RNS_NTT_ALU_RTL_AND_TESTBENCH_VERIFIED"
+  },
+  "files": {
+    ".gitignore": {
+      "sha256": "c60dc7e4b0b776c434cf4bced54d99833cb3743ebdecdeeb221712d2c8ee56f8",
+      "bytes": 363
+    },
+    "Challenge.lean": {
+      "sha256": "f1f1275dc825366f728c45f9328833dd0d06868d9e0e3db253dfad134b348530",
+      "bytes": 6045
+    },
+    "FormalConjectures_OEIS_A060003_PR_Ready.lean": {
+      "sha256": "72210e8d37f921f7d732ed704bc1224539eeafcc0abd15bd3eaf06f43f00db98",
+      "bytes": 5808
+    },
+    "LICENSE": {
+      "sha256": "55e976bd8b4f90db15ccac93a0aef96d78cdedb5268f2775ac39fe9958fcae9c",
+      "bytes": 635
+    },
+    "README.md": {
+      "sha256": "a557c0df27418cf8deb577a40e0e0ee67fc424e87857930def96941d211ef960",
+      "bytes": 11792
+    },
+    "Solution.lean": {
+      "sha256": "063f2053d8b982358392fa374a7aab81f6f8bf64da31abe85d5d9f234a3580dc",
+      "bytes": 3872
+    },
+    "UNA1_Comparator_Challenge.lean": {
+      "sha256": "da6c9314e4e44d01f90cb98f8aadd228518280efab18db9716e4ead726d32788",
+      "bytes": 1916
+    },
+    "UNA1_Comparator_Solution.lean": {
+      "sha256": "a6093ddd054ae041010a1a472d863dd4da4e8dc57320de40d6732d0cadc454fd",
+      "bytes": 1969
+    },
+    "UNA1_Millennium_And_Counterexample_Proofs.lean": {
+      "sha256": "ceb5815648c08ff34820c702e8af38a714b0b82624c1806f3918f73387d1b8db",
+      "bytes": 4414
+    },
+    "Una1Formal.lean": {
+      "sha256": "fb9aa042e25a9e79cf611ff87cd405d64f6c9940abcaac40674d0a7250140b4e",
+      "bytes": 93
+    },
+    "alien_yang_mills_constructive_verifier_v0_1.py": {
+      "sha256": "d66a908be4c9562d1bbea28aa3f0df27d8b7bcbc5d7aa30fd3404b58659b5b16",
+      "bytes": 23990
+    },
+    "comparator.json": {
+      "sha256": "d0c3649d76bba8b03580fdb06045d2d9a0d6cd02859b04b350fae527c6aebcf5",
+      "bytes": 1424
+    },
+    "external_third_party_auditor_v0_1.py": {
+      "sha256": "e649bf0b2c89ac8e197a484c006a205fbc41bb94fb20d9b6b6fc8072d0a70615",
+      "bytes": 10329
+    },
+    "formalization.yaml": {
+      "sha256": "b4bcbd76d3e3272c7d0713cb6b40589f32d854798f1e9c927d0eabfdfc555366",
+      "bytes": 2962
+    },
+    "lake-manifest.json": {
+      "sha256": "644a4f3d1472a6d812f43f999c64db18e9abf85fd9275998c9fa59d8db742297",
+      "bytes": 143
+    },
+    "lakefile.toml": {
+      "sha256": "4e840bd564a0af594ed044cbb00c1ddc9e3fcc1eba4a24492bfb0d1c10a0e0fa",
+      "bytes": 370
+    },
+    "lean-toolchain": {
+      "sha256": "2bdc48adfa58d0017e538a0ad117c5d73d35deec879978f909406a80c8037273",
+      "bytes": 25
+    },
+    "millennium_sublemma_explorer_v0_1.py": {
+      "sha256": "7822469305a8feb7541f05ea0186dac33eac0d9ce076d08237a69237f8b5a3c7",
+      "bytes": 32025
+    },
+    "una1_counterexample_and_blowup_hunter_v0_1.py": {
+      "sha256": "f33483f0994a967fee67e1efbb499e9023fe4d123d2d43681ba41e31ab6e0fb4",
+      "bytes": 21107
+    },
+    "una1_formal_verification_preprint.pdf": {
+      "sha256": "1768217fc2f18ed27de2159a6f71ad0fddbdccc7d6cdd7d6399205a47ebd5340",
+      "bytes": 35170
+    },
+    "una1_formal_verification_preprint.tex": {
+      "sha256": "14e3e5d9e43264e97d0b6d738c7cf6265eaffa5c1ac8a7ea11ac1e8341b9df7b",
+      "bytes": 12510
+    },
+    ".github/workflows/lean_action_ci.yml": {
+      "sha256": "54af973496e076950abb067b8382460f2877fe78b4a0c1eea8313f089147e89f",
+      "bytes": 859
+    },
+    "Una1Formal/Challenge.lean": {
+      "sha256": "90c12d3f95d58e2a407875f9737a3c2ed73826eae93ee0bd36560ca39df243ea",
+      "bytes": 5860
+    },
+    "Una1Formal/ComparatorAudit.lean": {
+      "sha256": "22c9188f0e8cbb1146c44d1cd6e91220951841dd20ec403ad518f11f6785fa2f",
+      "bytes": 2572
+    },
+    "Una1Formal/Solution.lean": {
+      "sha256": "00f029c94b35f7c8b7410a9a78ca5b3ff3fb7a4d9c4aff25e8dfc4c179af4700",
+      "bytes": 3433
+    },
+    "Una1Formal/VeritasM1CompactRNS.lean": {
+      "sha256": "77b585c6f709fce38a4b4829b162e831fbc6c5f872c13bc92c74a3d7e7a83cb5",
+      "bytes": 4390
+    },
+    "bin/run_una_math_solver.sh": {
+      "sha256": "eb0e3f23a629a3b70ad15e4beef0e629dd1d63610e8504d00d983c29ed911013",
+      "bytes": 4150
+    },
+    "hardware/VERITAS_M1_VLSI1_RTL_VERIFICATION_RECEIPT.json": {
+      "sha256": "e22c0b882635487ebd215ba7651831c0b22e729037fd72a9a7d8cf7a8b5c61bc",
+      "bytes": 662
+    },
+    "hardware/test_veritas_m1_rns_ntt_alu.py": {
+      "sha256": "6ff1b799f43935d7fdd88abba4c164cd7c6d836a4a6db6d6bd530b4acd5cc92d",
+      "bytes": 13338
+    },
+    "hardware/veritas_m1_rns_ntt_alu.sv": {
+      "sha256": "d75667c4ca0cf64390fa5e9fac0a8630fa52279787db9a178c885df5783866b0",
+      "bytes": 7562
+    },
+    "security/una1_workspace_security_guard_v1.py": {
+      "sha256": "7b977bb4bd4c48f6e809d07ebc963fa4324e63742ba7f8a5ef5ae95d5ceed265",
+      "bytes": 14294
+    }
+  },
+  "manifest_sha256": "93bded3382db8a6b32d0a579da136d0388206d0e1ecef2f3b6e5210f51844f88"
+}
