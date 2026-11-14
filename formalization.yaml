@@ -1,0 +1,95 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "una-lean4-formal-verification"
+  description: >-
+    Machine-verified formalization in Lean 4 verifying 26 cross-domain mathematical
+    theorems with zero external axioms (Axioms = []), including Hodges' conjecture /
+    Goldbach's 1752 odd composite counterexamples (5777 and 5993), equational theories
+    magma laws, Boolean hypercube unsatisfiability, chromatic graph obstructions,
+    and Yang-Mills one-loop beta coefficients.
+  authors:
+    - "Tom Budd"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Tom Budd"
+
+classification:
+  arxiv:
+    - "cs.LO"
+    - "math.NT"
+  msc2020:
+    - "03B35"
+    - "11Y55"
+    - "11B83"
+    - "08A05"
+
+sources:
+  - title: "A lesser-known Goldbach conjecture"
+    authors:
+      - "Laurent Hodges"
+    type: "article"
+    location: "https://oeis.org/A060003"
+    relationship: "formalizes"
+    license: "unknown"
+  - title: "Unsolved Problems in Number Theory (Problem A19)"
+    authors:
+      - "Richard K. Guy"
+    type: "book"
+    relationship: "formalizes"
+    license: "unknown"
+  - title: "Equational Theories Project"
+    authors:
+      - "Terence Tao"
+    type: "formalization"
+    location: "https://github.com/teorth/equational_theories"
+    relationship: "adapts"
+    license: "Apache-2.0"
+
+status:
+  scope: >-
+    Formalizes and proves 26 theorems across number theory (Goldbach/Stern counterexamples),
+    abstract algebra (magma identities and counterexamples), graph theory, and mathematical physics.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "autonomous"
+      models: []
+      framework: "una-weight-independent-verification-engine"
+      tool_setup: "Automated conjecture generation and Lean 4 kernel verification pipeline"
+      cost:
+        wall_time: "under 1 minute"
+        spend_usd: "0"
+        hardware: "Apple Silicon local"
+      prompting_notes: "Deterministic verification and decision procedures"
+  spend_usd: "0"
+  notes: "Synthesized and verified with zero external axioms."
+
+fidelity:
+  divergences: "none known"
+
+review:
+  status: "self-assessed"
+  reviewers:
+    - "Tom Budd"
+  notes: "Audited with Lean.MetaM comparator and verified against Lean 4 kernel."
+
+alignment:
+  namespace: "Challenge"
+  statements:
+    - source: "Goldbach 1752 / Hodges 1993"
+      lean: "Challenge.goldbach_1752_full_disproof_5777"
+      module: "Challenge"
+      status: "proved"
+      note: "Exhaustive disproof that 5777 is not of the form p + 2a^2"
+    - source: "Goldbach 1752 / Hodges 1993"
+      lean: "Challenge.goldbach_1752_full_disproof_5993"
+      module: "Challenge"
+      status: "proved"
+      note: "Exhaustive disproof that 5993 is not of the form p + 2a^2"
+
+acknowledgements: "Lean 4 community, Lean FRO, Google DeepMind Formal Conjectures project"

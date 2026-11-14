@@ -1,9 +1,17 @@
 name = "una1_formal"
 version = "0.1.0"
-defaultTargets = ["Una1Formal", "una1_comparator_audit"]
+defaultTargets = ["Una1Formal", "Challenge", "Solution", "una1_comparator_audit"]
 
 [[lean_lib]]
 name = "Una1Formal"
+
+[[lean_lib]]
+name = "Challenge"
+roots = ["Challenge"]
+
+[[lean_lib]]
+name = "Solution"
+roots = ["Solution"]
 
 [[lean_exe]]
 name = "una1_comparator_audit"

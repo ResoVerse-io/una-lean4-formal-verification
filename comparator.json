@@ -1,0 +1,39 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Challenge.yang_mills_su3_b0",
+    "Challenge.fermat_k3_euler_chi",
+    "Challenge.fermat_k3_h11_lefschetz",
+    "Challenge.hasse_bound_p7_sq",
+    "Challenge.unsat_3var_hypercube",
+    "Challenge.k4_not_3colorable",
+    "Challenge.magma_left_stabilizes",
+    "Challenge.magma_idempotent",
+    "Challenge.magma_not_associative",
+    "Challenge.cospectral_graphs_distinct_max_degree",
+    "Challenge.stern_5777_a1_composite",
+    "Challenge.stern_5777_a2_composite",
+    "Challenge.goldbach_1752_full_disproof_5777",
+    "Challenge.goldbach_1752_full_disproof_5993",
+    "Challenge.rps_magma_idempotent_and_commutative",
+    "Challenge.rps_magma_not_associative",
+    "Challenge.left_zero_magma_medial_law",
+    "Challenge.left_zero_magma_not_commutative",
+    "Challenge.music_theory_pythagorean_comma_nonclosure",
+    "Challenge.music_theory_syntonic_comma_ratio",
+    "Challenge.music_theory_plr_P_involution",
+    "Challenge.music_theory_plr_L_involution_c_major",
+    "Challenge.music_theory_plr_R_involution_c_major",
+    "Challenge.languages_dyck_open_close_cancellation",
+    "Challenge.quantum_gravity_goroff_sagnotti_2loop_nonzero",
+    "Challenge.boolean_equivalence_symmetry"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
