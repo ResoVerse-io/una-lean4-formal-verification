@@ -1,3 +1,5 @@
+module
+
 /-
 Copyright 2026 Tom Budd.
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -/
 
-public section
+@[expose] public section
 
 /-!
 # Palomar Registry Challenge Specification: 26 Formal Theorems

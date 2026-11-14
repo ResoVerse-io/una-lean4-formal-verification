@@ -1,6 +1,10 @@
-import Una1Formal.Challenge
+module
+
+public import Una1Formal.Challenge
 
 namespace Una1Formal.Solution
+
+@[expose] public section
 open Una1Formal
 open Una1Formal.M3
 
@@ -78,4 +82,5 @@ theorem quantum_gravity_goroff_sagnotti_2loop_nonzero : (209 : Nat) ≠ 0 := by 
 theorem boolean_equivalence_symmetry (a b : Bool) : (a == b) = (b == a) := by
   cases a <;> cases b <;> rfl
 
+end
 end Una1Formal.Solution

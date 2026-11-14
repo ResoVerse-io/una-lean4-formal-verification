@@ -1,3 +1,5 @@
+module
+
 /-
 Copyright 2026 Tom Budd.
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +15,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -/
 
-import Challenge
+public import Challenge
+
+@[expose] public section
 
 namespace Solution
 
@@ -94,3 +98,5 @@ theorem boolean_equivalence_symmetry (a b : Bool) : (a == b) = (b == a) := by
   cases a <;> cases b <;> rfl
 
 end Solution
+
+end

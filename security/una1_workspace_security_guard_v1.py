@@ -37,8 +37,6 @@ SOLUTION_LEAN_FILES = (
     "Solution.lean",
     "Una1Formal/Solution.lean",
     "Una1Formal/VeritasM1CompactRNS.lean",
-    "UNA1_Comparator_Solution.lean",
-    "UNA1_Millennium_And_Counterexample_Proofs.lean",
 )
 
 VERITAS_M1_THEOREMS = (

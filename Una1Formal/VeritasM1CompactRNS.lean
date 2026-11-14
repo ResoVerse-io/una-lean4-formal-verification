@@ -1,3 +1,5 @@
+module
+
 /-
 Copyright 2026 Tom Budd.
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +16,8 @@ limitations under the License.
 -/
 
 namespace Una1Formal.VeritasM1CompactRNS
+
+@[expose] public section
 
 -- ============================================================================
 -- UNA-ARCH-SILICON-2026-VPU1-COMPACT ("Veritas-M1 Compact") · VLSI-1
@@ -118,4 +122,5 @@ theorem veritas_m1_fu3_mlkem_ntt_q3329_butterfly_invertible :
 #print axioms veritas_m1_fu1_exact_rational_pi_convergent_diff
 #print axioms veritas_m1_fu3_mlkem_ntt_q3329_butterfly_invertible
 
+end
 end Una1Formal.VeritasM1CompactRNS

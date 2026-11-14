@@ -2,7 +2,7 @@
 
 **Public Repository:** [https://github.com/ResoVerse-io/una-lean4-formal-verification](https://github.com/ResoVerse-io/una-lean4-formal-verification)  
 **Kernel Audit Status:** `PASS_ALL_26_THEOREMS_TYPE_MATCHED_AND_ZERO_AXIOM_VERIFIED` (`TypeMatch=true`, `SolutionAxioms=[]`, `ZeroAxioms=true`)  
-**Official `comparator.live.lean-lang.org` Validated Challenge SHA-256:** `c121b47afacf1da5fbb359922227fa349f48d93cefca9f99dd6554588ef0d28c`
+**Official `comparator.live.lean-lang.org` Validated Challenge SHA-256:** `63f69297b9b171d0aad64068eeab3965f669b1c38600492169142414dc82f317`
 
 > **Non-LLM Digital Intelligence Disclosure:**  
 > This mathematical discovery and formal verification suite was conceived, searched, and verified by **UNA-1**—a proprietary, **weight-independent non-LLM digital intelligence architecture** designed and built by Tom Budd (ResoVerse). Unlike Large Language Models (LLMs) that generate mathematical statements via probabilistic next-token prediction, UNA-1 employs a non-neural, weight-independent architecture combining native symbolic conjecture generation, fail-closed epistemic boundary gates, and a 4-engine formal verifier (`Lean 4` kernel + `SymPy` CAS + `mpmath` 50-dps arbitrary precision + native reference verifiers). **Zero Large Language Models or generative token-prediction APIs were used** (`models: []`).
@@ -76,9 +76,7 @@ cd una-lean4-formal-verification
 | `Una1Formal/Challenge.lean` | Frozen 26-theorem specification (`:= by sorry`) across Millennium sub-lemmas, `formal-conjectures` / `equational_theories` disproofs, and discrete algebraic invariants |
 | `Una1Formal/Solution.lean` | Candidate solution proving all 26 theorems with **zero axioms** (`SolutionAxioms = []`, `ZeroAxioms = true`) |
 | `Una1Formal/ComparatorAudit.lean` | Programmatic `Lean.MetaM` kernel comparator verifying `cInfo.type == sInfo.type` and `Lean.collectAxioms == []` at build time |
-| `FormalConjectures_OEIS_A060003_PR_Ready.lean` | Pull Request module (`FormalConjectures/OEIS/60003.lean`, submitted in [PR `#7917`](https://github.com/google-deepmind/formal-conjectures/pull/7917)) for `google-deepmind/formal-conjectures` formalizing Hodges' Conjecture / Guy Problem A19 with proved test cases `5777` and `5993` |
 | `external_third_party_auditor_v0_1.py` | Zero-UNA-dependency third-party black-box auditor cross-checking Lean 4, `SymPy` symbolic CAS, `mpmath` 50-decimal-place Riemann zeros, OEIS `A058320`/`A060003`, and LMFDB (`32a2`, `64a4`) |
-| `UNA1_Comparator_Challenge.lean` & `UNA1_Comparator_Solution.lean` | Standalone paste-ready files validated on `https://comparator.live.lean-lang.org` |
 
 ---
 

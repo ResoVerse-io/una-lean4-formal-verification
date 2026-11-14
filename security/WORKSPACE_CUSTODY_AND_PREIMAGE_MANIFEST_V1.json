@@ -1,13 +1,13 @@
 {
   "schema": "UNA1_LEAN4_WORKSPACE_CUSTODY_MANIFEST_V1",
-  "sealed_utc": "2026-11-14T19:27:31.671502+00:00",
+  "sealed_utc": "2026-11-14T19:44:38.356752+00:00",
   "repo_root": ".",
   "git_permissions": {
     "git_dir_exists": true,
     "mode_octal": "0700",
     "owner_only_0700": true
   },
-  "file_count": 31,
+  "file_count": 27,
   "prerequisite_gates": {
     "1_revocation_kill_switch": "PASS_NO_REVOCATION_MARKER",
     "2_secret_and_protected_path_scan": "PASS_ZERO_SECRETS_AND_PROTECTED_PATH_LEAKS",
@@ -20,40 +20,24 @@
       "bytes": 363
     },
     "Challenge.lean": {
-      "sha256": "c121b47afacf1da5fbb359922227fa349f48d93cefca9f99dd6554588ef0d28c",
-      "bytes": 6007
-    },
-    "FormalConjectures_OEIS_A060003_PR_Ready.lean": {
-      "sha256": "72210e8d37f921f7d732ed704bc1224539eeafcc0abd15bd3eaf06f43f00db98",
-      "bytes": 5808
+      "sha256": "63f69297b9b171d0aad64068eeab3965f669b1c38600492169142414dc82f317",
+      "bytes": 6025
     },
     "LICENSE": {
       "sha256": "55e976bd8b4f90db15ccac93a0aef96d78cdedb5268f2775ac39fe9958fcae9c",
       "bytes": 635
     },
     "README.md": {
-      "sha256": "d3e11436a904588c51a2687ad4d3ae44631b5f3274f17848ca812c8b6425ee17",
-      "bytes": 12565
+      "sha256": "8a0d6962494a1e883fd02550ef63a8377d077eb94f279e2e5b4b4d457e35245f",
+      "bytes": 12076
     },
     "Solution.lean": {
-      "sha256": "063f2053d8b982358392fa374a7aab81f6f8bf64da31abe85d5d9f234a3580dc",
-      "bytes": 3872
-    },
-    "UNA1_Comparator_Challenge.lean": {
-      "sha256": "da6c9314e4e44d01f90cb98f8aadd228518280efab18db9716e4ead726d32788",
-      "bytes": 1916
-    },
-    "UNA1_Comparator_Solution.lean": {
-      "sha256": "a6093ddd054ae041010a1a472d863dd4da4e8dc57320de40d6732d0cadc454fd",
-      "bytes": 1969
-    },
-    "UNA1_Millennium_And_Counterexample_Proofs.lean": {
-      "sha256": "ceb5815648c08ff34820c702e8af38a714b0b82624c1806f3918f73387d1b8db",
-      "bytes": 4414
+      "sha256": "8ef494fbad0359e88b217484e3a37cc7f3f7a6622662af702f68e1302bbf13f1",
+      "bytes": 3918
     },
     "Una1Formal.lean": {
-      "sha256": "fb9aa042e25a9e79cf611ff87cd405d64f6c9940abcaac40674d0a7250140b4e",
-      "bytes": 93
+      "sha256": "d437e0f0cca9b450a2fcb6194f213e4727ec3229b9a8f3b2d3169f7ea0498124",
+      "bytes": 122
     },
     "alien_yang_mills_constructive_verifier_v0_1.py": {
       "sha256": "d66a908be4c9562d1bbea28aa3f0df27d8b7bcbc5d7aa30fd3404b58659b5b16",
@@ -80,7 +64,7 @@
       "bytes": 370
     },
     "lean-toolchain": {
-      "sha256": "2bdc48adfa58d0017e538a0ad117c5d73d35deec879978f909406a80c8037273",
+      "sha256": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
       "bytes": 25
     },
     "millennium_sublemma_explorer_v0_1.py": {
@@ -104,20 +88,20 @@
       "bytes": 859
     },
     "Una1Formal/Challenge.lean": {
-      "sha256": "90c12d3f95d58e2a407875f9737a3c2ed73826eae93ee0bd36560ca39df243ea",
-      "bytes": 5860
+      "sha256": "be956c949b9d23f01f822a9a7d6c7402b65755e1a392756a84538c20989b0864",
+      "bytes": 5898
     },
     "Una1Formal/ComparatorAudit.lean": {
-      "sha256": "22c9188f0e8cbb1146c44d1cd6e91220951841dd20ec403ad518f11f6785fa2f",
-      "bytes": 2572
+      "sha256": "6d243e5dc4405c85da535162bdc86f78c37eaf86ea2724f9d7fa59edca4f9004",
+      "bytes": 2580
     },
     "Una1Formal/Solution.lean": {
-      "sha256": "00f029c94b35f7c8b7410a9a78ca5b3ff3fb7a4d9c4aff25e8dfc4c179af4700",
-      "bytes": 3433
+      "sha256": "fa930fe1e9568e55268fb41de0b624d4a6575f6338443bf8fbc7ca47569fe147",
+      "bytes": 3478
     },
     "Una1Formal/VeritasM1CompactRNS.lean": {
-      "sha256": "77b585c6f709fce38a4b4829b162e831fbc6c5f872c13bc92c74a3d7e7a83cb5",
-      "bytes": 4390
+      "sha256": "842fc14dfafe577435a8b6161ea09c872953a2cae60231cf884342e3a8cf612a",
+      "bytes": 4428
     },
     "bin/run_una_math_solver.sh": {
       "sha256": "eb0e3f23a629a3b70ad15e4beef0e629dd1d63610e8504d00d983c29ed911013",
@@ -136,9 +120,9 @@
       "bytes": 7562
     },
     "security/una1_workspace_security_guard_v1.py": {
-      "sha256": "7b977bb4bd4c48f6e809d07ebc963fa4324e63742ba7f8a5ef5ae95d5ceed265",
-      "bytes": 14294
+      "sha256": "37e372136f617388183035f50a4785219e5675134bb44b090c43684e1ff87b2b",
+      "bytes": 14203
     }
   },
-  "manifest_sha256": "66caa2b07786a16c67ebf9fb646e6a813444016a2dae753fd6e2bb711eef9ab2"
+  "manifest_sha256": "e7aeea98d82b7a3855bafe40990e06b3e42bda3752aac74da493bdeaff1f49eb"
 }

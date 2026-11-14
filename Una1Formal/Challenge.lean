@@ -1,4 +1,8 @@
+module
+
 namespace Una1Formal
+
+@[expose] public section
 
 -- ============================================================================
 -- SHARED DEFINITIONS FOR ALL 26 FORMAL THEOREMS
@@ -153,4 +157,5 @@ theorem quantum_gravity_goroff_sagnotti_2loop_nonzero : (209 : Nat) ≠ 0 := by 
 theorem boolean_equivalence_symmetry (a b : Bool) : (a == b) = (b == a) := by sorry
 
 end Challenge
+end
 end Una1Formal
