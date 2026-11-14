@@ -8,10 +8,20 @@
 
 ## Quick Start (Zero External Dependencies)
 
+Run all verification pipelines (Lean 4 kernel comparator, counterexample hunter, millennium sublemma explorer, external zero-axiom auditor) with a single command:
+
 ```bash
 git clone https://github.com/ResoVerse-io/una-lean4-formal-verification.git
 cd una-lean4-formal-verification
-lake build Una1Formal.ComparatorAudit
+
+# Run full formal verification & neuro-symbolic discovery suite:
+./bin/run_una_math_solver.sh all
+
+# Or run individual verification stages:
+./bin/run_una_math_solver.sh lean            # Lean 4 kernel comparator (26 theorems)
+./bin/run_una_math_solver.sh counterexamples # Refutation & existence hunter
+./bin/run_una_math_solver.sh sublemmas       # Millennium sublemma explorer
+./bin/run_una_math_solver.sh audit           # External zero-axiom blackbox auditor
 ```
 
 ### Expected Output (`Una1Formal/ComparatorAudit.lean`)
@@ -56,6 +66,10 @@ lake build Una1Formal.ComparatorAudit
 
 | File / Module | Description |
 | :--- | :--- |
+| `bin/run_una_math_solver.sh` | Unified executable CLI runner executing all 4 formal verification & discovery stages (`all`, `lean`, `counterexamples`, `sublemmas`, `audit`) |
+| `Challenge.lean` & `Solution.lean` | Palomar Registry root specification and zero-axiom kernel solution for all 26 challenge theorems |
+| `comparator.json` | Palomar Registry comparator mapping (`Challenge` $\to$ `Solution`, permitted axioms: `propext`, `Quot.sound`, `Classical.choice`, `enable_nanoda: true`) |
+| `formalization.yaml` | Mathlib-initiative v0.4 formalization metadata (Apache-2.0, zero axioms, self-assessed review) |
 | `Una1Formal/Challenge.lean` | Frozen 26-theorem specification (`:= by sorry`) across Millennium sub-lemmas, `formal-conjectures` / `equational_theories` disproofs, and discrete algebraic invariants |
 | `Una1Formal/Solution.lean` | Candidate solution proving all 26 theorems with **zero axioms** (`SolutionAxioms = []`, `ZeroAxioms = true`) |
 | `Una1Formal/ComparatorAudit.lean` | Programmatic `Lean.MetaM` kernel comparator verifying `cInfo.type == sInfo.type` and `Lean.collectAxioms == []` at build time |
