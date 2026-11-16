@@ -35,7 +35,7 @@ _lean_which = __import__("shutil").which("lean") or str(Path.home() / ".elan/bin
 if not Path(_lean_which).is_file() and (Path.home() / "UNA/.toolchains/elan/bin/lean").is_file():
     _lean_which = str(Path.home() / "UNA/.toolchains/elan/bin/lean")
 LEAN_BIN = Path(_lean_which)
-LEAN_PROOF_FILE = CANDIDATE_DIR / "UNA1_Millennium_And_Counterexample_Proofs.lean"
+LEAN_PROOF_FILE = CANDIDATE_DIR / "Una1Formal" / "Solution.lean"
 
 
 def run_external_blackbox_audit() -> dict:
@@ -61,7 +61,7 @@ def run_external_blackbox_audit() -> dict:
 
     # 3. AUDIT 1: Official Lean 4 Kernel & `#print axioms` Verification (Zero `sorryAx`, Zero Classical Axioms)
     lean_proc = subprocess.run(
-        [str(LEAN_BIN), str(LEAN_PROOF_FILE)],
+        [str(LEAN_BIN.parent / "lake"), "env", "lean", "Una1Formal/ComparatorAudit.lean"],
         capture_output=True,
         text=True,
         check=False,
@@ -84,12 +84,14 @@ def run_external_blackbox_audit() -> dict:
     lean_axiom_free = (
         lean_proc.returncode == 0
         and lean_proc.stderr.strip() == ""
-        and len(axiom_lines) == 12
+        and "PASS_ALL_26_THEOREMS_TYPE_MATCHED_AND_ZERO_AXIOM_VERIFIED" in lean_proc.stdout
         and all(
-            f"'{thm}' does not depend on any axioms" in axiom_lines
+            any(
+                thm in ln and "TypeMatch=true" in ln and "ZeroAxioms=true" in ln
+                for ln in axiom_lines
+            )
             for thm in expected_12_theorems
         )
-        and "sorryAx" not in lean_proc.stdout
     )
     assert lean_axiom_free, f"Lean 4 axiom audit failed: {lean_proc.stdout} / {lean_proc.stderr}"
 

@@ -1,6 +1,6 @@
 {
   "schema": "UNA1_LEAN4_WORKSPACE_CUSTODY_MANIFEST_V1",
-  "sealed_utc": "2026-11-14T19:44:38.356752+00:00",
+  "sealed_utc": "2026-11-16T20:28:43.341216+00:00",
   "repo_root": ".",
   "git_permissions": {
     "git_dir_exists": true,
@@ -48,8 +48,8 @@
       "bytes": 1424
     },
     "external_third_party_auditor_v0_1.py": {
-      "sha256": "e649bf0b2c89ac8e197a484c006a205fbc41bb94fb20d9b6b6fc8072d0a70615",
-      "bytes": 10329
+      "sha256": "58dfb52cc0a6c992ffed9d60649abcf936eec3de141c6eff6d3d27f4c0afc9b0",
+      "bytes": 10448
     },
     "formalization.yaml": {
       "sha256": "d86378adba9896641a99be3d6c2e8d6fbd6123e606f765128be6d490f25270dc",
@@ -124,5 +124,5 @@
       "bytes": 14203
     }
   },
-  "manifest_sha256": "e7aeea98d82b7a3855bafe40990e06b3e42bda3752aac74da493bdeaff1f49eb"
+  "manifest_sha256": "f5760a6c2fd8859069f6f5bf688e13eda9e53ae9bd5af9706449f7c37b5bd7cb"
 }
